@@ -15,9 +15,8 @@ sap.ui.controller("myfirstui5.first", {
 				HumidityChange: "Up",
 				HColor: "Good",
 				Humidity: 0,
-				RadiationChange: "Up",
-				RColor: "Good",
-				Radiation: 0
+				MaxHumidity: Math.max(),
+				MinHumidity: Math.min()
 			}
 		};
 		
@@ -50,11 +49,10 @@ sap.ui.controller("myfirstui5.first", {
 					oData.sensorDataChart.shift();
 				}
 				oData.sensorDataTile["HumidityChange"] = message.humidity>=oData.sensorDataTile["Humidity"] ? "Up" : "Down";
-				oData.sensorDataTile["HColor"] = message.humidity>=oData.sensorDataTile["Humidity"] ? "Good" : "Critical";
+				oData.sensorDataTile["HColor"] = message.humidity>=oData.sensorDataTile["Humidity"] ? "Critical" : "Good";
 				oData.sensorDataTile["Humidity"] = message.humidity;
-				oData.sensorDataTile["RadiationChange"] = message.radiation_level>=oData.sensorDataTile["Radiation"] ? "Up" : "Down";
-				oData.sensorDataTile["RColor"] = message.radiation_level>=oData.sensorDataTile["Radiation"] ? "Critical" : "Good";
-				oData.sensorDataTile["Radiation"] = message.radiation_level;
+				oData.sensorDataTile["MaxHumidity"] = message.humidity>=oData.sensorDataTile["MaxHumidity"] ? message.humidity : oData.sensorDataTile["MaxHumidity"];
+				oData.sensorDataTile["MinHumidity"] = message.humidity<=oData.sensorDataTile["MinHumidity"] ? message.humidity : oData.sensorDataTile["MinHumidity"];
 				oModel.refresh();
 //				sap.ui.getCore().getModel('line').setData(sap.ui.getCore().getModel('line').getData().sensorData);
 			}

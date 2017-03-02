@@ -89,20 +89,35 @@ sap.ui.jsview("myfirstui5.first", {
             ]
         });
 		
-		var oRadContent = new sap.suite.ui.commons.NumericContent({
-            indicator: "{line>/sensorDataTile/RadiationChange}",
+		var oMaxHumidityContent = new sap.suite.ui.commons.NumericContent({
             animateTextChange: false,
-            value: "{line>/sensorDataTile/Radiation}",
-            valueColor: "{line>/sensorDataTile/RColor}"
+            value: "{line>/sensorDataTile/MaxHumidity}"
         });
 		
-        var oRadiationT = new sap.suite.ui.commons.GenericTile({
-            header: "Radiation",
+        var oMaxHumidityT = new sap.suite.ui.commons.GenericTile({
+            header: "Max Humidity",
             tileContent: [
                 new sap.suite.ui.commons.TileContent({
-                    footer: "(in millirads/hr)",
+                    footer: "(in %)",
                     content: [
-                    	oRadContent
+                    	oMaxHumidityContent
+                    ]
+                })
+            ]
+        });
+        
+        var oMinHumidityContent = new sap.suite.ui.commons.NumericContent({
+            animateTextChange: false,
+            value: "{line>/sensorDataTile/MinHumidity}"
+        });
+		
+        var oMinHumidityT = new sap.suite.ui.commons.GenericTile({
+            header: "Min Humidity",
+            tileContent: [
+                new sap.suite.ui.commons.TileContent({
+                    footer: "(in %)",
+                    content: [
+                    	oMinHumidityContent
                     ]
                 })
             ]
@@ -113,15 +128,21 @@ sap.ui.jsview("myfirstui5.first", {
                 oHumidityT
             ]
         });
-        var oRadiation = new sap.m.CustomTile({
+        var oMaxHumidity = new sap.m.CustomTile({
             content: [
-                oRadiationT
+                oMaxHumidityT
+            ]
+        });
+        var oMinHumidity = new sap.m.CustomTile({
+            content: [
+                oMinHumidityT
             ]
         });
         var oTileContainer = new sap.m.TileContainer({
             tiles: [
             	oHumidity,
-            	oRadiation
+            	oMaxHumidity,
+            	oMinHumidity
             ]
 
         });
