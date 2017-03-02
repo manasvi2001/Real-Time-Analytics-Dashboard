@@ -139,6 +139,7 @@ sap.ui.jsview("myfirstui5.first", {
             ]
         });
         var oTileContainer = new sap.m.TileContainer({
+        	height: "45%",
             tiles: [
             	oHumidity,
             	oMaxHumidity,
@@ -167,8 +168,8 @@ sap.ui.jsview("myfirstui5.first", {
 //		1488441906
 
 		var oPage = new sap.m.Page({
-			title : "Line chart",
-			content : [ oVizFramLine, oTileContainer ]
+			title : "Real-TIme Analytics Dashboard",
+			content : [oTileContainer, oVizFramLine]
 		});
 		return oPage;
 	}
